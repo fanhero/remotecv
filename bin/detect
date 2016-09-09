@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# takes BUILD_DIR as a single argument
+echo "Python + OpenCV + Numpy + Scipy"
+# SBL exit 0 indicates that the buildback should be used, signifying no need for inference
+exit 0
