@@ -13,7 +13,7 @@ def load_sync(path):
 	"""
 	bucket = path.lstrip('/').split('/')
 	key = '/'.join(path.lstrip('/')[1:])
-	logger.DEBUG('BK',bucket, key)
+	logger.debug('BK',bucket, key)
 	region = os.environ.get('AWS_REGION', 'us-east-1')
 
 	bucket_loader = Bucket(bucket, region)
