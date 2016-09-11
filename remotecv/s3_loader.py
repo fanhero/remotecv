@@ -12,8 +12,7 @@ def load_sync(path):
 	:param string path: full path containing bucket
 	"""
 	bucket = path.lstrip('/').split('/')
-	key = '/'.join(path.lstrip('/')[1:])
-	logger.debug('BK',bucket, key)
+	key = '/'.join(path.split('/'))[1:]
 	region = os.environ.get('AWS_REGION', 'us-east-1')
 
 	bucket_loader = Bucket(bucket, region)
