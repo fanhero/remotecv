@@ -16,7 +16,7 @@ def load_sync(path):
 	path = urllib2.unquote(path)
 	bucket = path.lstrip('/').split('/')
 	key = '/'.join(path.split('/'))[1:]
-	logger.warn('[PATCH_BUCKET_KEY]', type(path))
+	logger.warn('[PATCH_BUCKET_KEY]: '+ type(path))
 	region = os.environ.get('AWS_REGION', 'us-east-1')
 
 	bucket_loader = Bucket(bucket, region)
