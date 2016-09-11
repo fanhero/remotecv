@@ -1,7 +1,9 @@
 # Simple botocore Bucket loader implmentation
 
+from remotecv.utils import logger
 
 import botocore.session
+
 
 class Bucket(object):
 	"""
@@ -21,7 +23,7 @@ class Bucket(object):
 		"""
 		self._bucket = bucket
 		self._region = region
-	
+		
 		session = None or botocore.session.get_session()
 		self._client = session.create_client('s3', region_name=self._region)
 
@@ -30,5 +32,6 @@ class Bucket(object):
 		Returns objects matching key from bucket
 		:param string key: Key to retrieve the file
 		"""
+		logger.debug(self._bucket)
 		s3_object = self._client.get_object(Bucket=self._bucket, Key=key)
 		return s3_object['Body'].read()
