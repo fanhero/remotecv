@@ -21,7 +21,8 @@ class Bucket(object):
 		"""
 		self._bucket = bucket
 		self._region = region
-		session = botocore.session.get_session()
+	
+		session = None or botocore.session.get_session()
 		self._client = session.create_client('s3', region_name=self._region)
 
 	def get(self, key):
