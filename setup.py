@@ -15,7 +15,7 @@ tests_require = [
     "nose",
     "preggy",
     "coverage",
-    "numpy",
+    "numpy=1.9.1",
     "yanc",
     "nose-focus",
     "mock",
