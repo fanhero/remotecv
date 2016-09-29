@@ -59,7 +59,7 @@ def main(params=None):
 
     other_group = parser.add_argument_group('Other arguments')
     other_group.add_argument('-l', '--level', default='debug', help='Logging level')
-    other_group.add_argument('-o', '--loader', default='remotecv.http_loader', help='Loader used')
+    other_group.add_argument('-o', '--loader', default='remotecv.s3_loader', help='Loader used')
     other_group.add_argument('-s', '--store', default='remotecv.result_store.redis_store', help='Loader used')
     other_group.add_argument('-t', '--timeout', default=None, type=int, help='Timeout in seconds for image detection')
     other_group.add_argument('--sentry_url', default=None, help='URL used to send errors to sentry')
