@@ -4,6 +4,7 @@ import tornado.ioloop
 import tornado.web
 import argparse
 import sys
+import json
 
 from redis import Redis, RedisError
 
@@ -16,6 +17,7 @@ class MainHandler(tornado.web.RequestHandler):
     queue = None
 
     def get(self):
+        self.clear()
         response = [{'name': 'REMOTECV', 'quantity': 0}]
         try:
             if not MainHandler.queue:
@@ -26,11 +28,13 @@ class MainHandler(tornado.web.RequestHandler):
                 MainHandler.queue = UniqueQueue(server=redis)
             jobs = MainHandler.queue.info().get('pending')
             response[0]['quantity'] = jobs
-            self.write(str(response))
+            self.write(json.dumps(response))
         except RedisError:
             MainHandler.queue = None
             logger.exception('Could not connect to Redis')
-            self.write(str(response))
+            self.write(json.dumps(response))
+        finally:
+            self.set_header('Content-Type', 'application/json')
 
 
 def main(params=None):
