@@ -18,7 +18,7 @@ addons:
     - libjpeg-dev
     - python-opencv
 before_install:
-- echo $pass | gpg --passphrase-fd 0 Procfile.gpg
+- echo $password | gpg --passphrase-fd 0 Procfile.gpg
 install:
 - pip install coveralls
 - make setup
